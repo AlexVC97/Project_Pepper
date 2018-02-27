@@ -12,11 +12,11 @@ def end_read(signal,frame):
     GPIO.cleanup()
 
 if __name__ == "__main__":
-    # Hook the SIGINT
-    signal.signal(signal.SIGINT, end_read)
-
     #myThreadOb1 = RpiBroadcast("1254268ECHDN")
     myThreadOb2 = Nfc()
+
+    # Hook the SIGINT
+    signal.signal(signal.SIGINT, end_read)
 
     #myThreadOb1.start()
     myThreadOb2.start()
