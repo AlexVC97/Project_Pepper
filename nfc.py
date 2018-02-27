@@ -43,21 +43,21 @@ class Nfc(Thread):
                     flag_read = True
                     #print str(uid)
                     if oldUid != uid:
-                       oldUid = uid
-                       if (uid == [138,201,99,6,38]):
-                         print "Welkom Kurt"
-                       elif (uid == [4,7,107,1,105]):
-                         print "Welkom Lucas"
-                       elif (uid == [6,204,246,147,175]):
-                         print "Welkom Emma"
-                       elif (uid == [168,151,17,4,42]):
-                         print "Welkom Christophe"
-                     elif (uid == [136,4,208,6,90]):
-                         print "Welkom Michel"
-                       else:
-                         print "onbekende persoon"
+                        oldUid = uid
+                        if (uid == [138,201,99,6,38]):
+                            print "Welkom Kurt"
+                        elif (uid == [4,7,107,1,105]):
+                            print "Welkom Lucas"
+                        elif (uid == [6,204,246,147,175]):
+                            print "Welkom Emma"
+                        elif (uid == [168,151,17,4,42]):
+                            print "Welkom Christophe"
+                        elif (uid == [136,4,208,6,90]):
+                            print "Welkom Michel"
+                        else:
+                            print "onbekende persoon"
                        # This is the default key for authentication
-                       key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
+                        key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
 
                        # Select the scanned tag
                        #MIFAREReader.MFRC522_SelectTag(uid)
