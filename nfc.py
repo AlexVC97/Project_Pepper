@@ -18,11 +18,11 @@ class Nfc(Thread):
             print "Ctrl+C captured, ending read."
             continue_reading = False
             GPIO.cleanup()
-            
+
         continue_reading = True
         oldUid = [0,0,0,0,0]
         # Hook the SIGINT
-        signal.signal(signal.SIGINT, end_read())
+        signal.signal(signal.SIGINT, end_read)
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
