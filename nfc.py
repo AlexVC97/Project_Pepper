@@ -19,7 +19,7 @@ class Nfc(Thread):
 
         # Welcome message
         print "Identificatie APP"
-        print "Press Ctrl-C to stop."
+        print "Press break to stop."
 
         MIFAREReader.Write_MFRC522(0x04,0x55)
 
