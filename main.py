@@ -8,7 +8,7 @@ continue_reading = True
 def end_read(signal,frame):
     #global continue_reading
     print "Ctrl+C captured, ending read."
-    Nfc.continue_reading = False
+    myThreadOb2.continue_reading = False
     GPIO.cleanup()
 
 if __name__ == "__main__":
