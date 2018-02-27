@@ -38,7 +38,7 @@ class Nfc(Thread):
                 # If we have the UID, continue
                 if status == MIFAREReader.MI_OK:
                     #Print UID
-                    print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])+","+str(uid[4])
+                    #print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])+","+str(uid[4])
 
                     flag_read = True
                     #print str(uid)
