@@ -38,7 +38,7 @@ class Nfc(Thread):
                 # If we have the UID, continue
                 if status == MIFAREReader.MI_OK:
                     #Print UID
-                    print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])
+                    print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])","+str(uid[4])
 
                     flag_read = True
                     #print str(uid)
@@ -52,6 +52,7 @@ class Nfc(Thread):
                          print "Welkom Emma"
                        elif (uid == [168,151,17,4,42]):
                          print "Welkom Christophe"
+                        elif (uid == [8, 27, 48, 136])
                        else:
                          print "onbekende persoon"
                        # This is the default key for authentication
