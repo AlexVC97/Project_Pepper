@@ -52,7 +52,7 @@ class Nfc(Thread):
                          print "Welkom Emma"
                        elif (uid == [168,151,17,4,42]):
                          print "Welkom Christophe"
-                     elif (uid == [8,97,173,198,2]):
+                       elif (uid == [8,97,173,198,2]):
                          print "Welkom Michel"
                        else:
                          print "onbekende persoon"
