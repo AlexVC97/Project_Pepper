@@ -52,7 +52,6 @@ class Nfc(Thread):
                          print "Welkom Emma"
                        elif (uid == [168,151,17,4,42]):
                          print "Welkom Christophe"
-                        elif (uid == [8, 27, 48, 136])
                        else:
                          print "onbekende persoon"
                        # This is the default key for authentication
