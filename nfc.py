@@ -9,9 +9,9 @@ from threading import Thread
 class Nfc(Thread):
     def __init__(self):
         Thread.__init__(self)
+        self.continue_reading = True
 
     def run(self):
-        continue_reading = True
         oldUid = [0,0,0,0,0]
 
         # Create an object of the class MFRC522
