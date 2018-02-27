@@ -11,18 +11,18 @@ class Nfc(Thread):
     def __init__(self):
         Thread.__init__(self)
 
-    # Capture SIGINT for cleanup when the script is aborted
-    def end_read(signal,frame):
-        global continue_reading
-        print "Ctrl+C captured, ending read."
-        continue_reading = False
-        GPIO.cleanup()
-
     def run(self):
+        # Capture SIGINT for cleanup when the script is aborted
+        def end_read(signal,frame):
+            global continue_reading
+            print "Ctrl+C captured, ending read."
+            continue_reading = False
+            GPIO.cleanup()
+            
         continue_reading = True
         oldUid = [0,0,0,0,0]
         # Hook the SIGINT
-        signal.signal(signal.SIGINT, end_read)
+        signal.signal(signal.SIGINT, end_read())
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
