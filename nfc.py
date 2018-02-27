@@ -3,7 +3,6 @@
 
 import RPi.GPIO as GPIO
 import MFRC522
-import signal
 from time import sleep
 from threading import Thread
 
