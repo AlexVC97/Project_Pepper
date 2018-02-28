@@ -3,7 +3,7 @@ from nfc import Nfc
 from time import *
 
 if __name__ == "__main__":
-    broadcast = RpiBroadcast("1254268ECHDN")
+    broadcast = Broadcast("1254268ECHDN")
     myThreadOb1 = Nfc()
 
     broadcast.config_socket()
