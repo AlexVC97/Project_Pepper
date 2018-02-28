@@ -7,11 +7,11 @@ import logging.handlers
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-formatter = logging.Formatter("%(levelname)s:%(name)s:%(message)s")
+formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 #file_handler = logging.FileHandler("pepper.log")
 #file_handler.setFormatter(formatter)
 
-rotate_handler = logging.handlers.RotatingFileHandler("logging.pepper.out", maxBytes=1000000, backupCount=3, filemode="w")
+rotate_handler = logging.handlers.RotatingFileHandler("logging.pepper.out", maxBytes=1000000, backupCount=5, mode="w")
 rotate_handler.setFormatter(formatter)
 
 #logger.addHandler(file_handler)
