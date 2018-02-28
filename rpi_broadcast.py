@@ -8,6 +8,7 @@ class RpiBroadcast():
         self.data = ""
         self.address = ("", 5001)
         self.validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
+        create_socket()
 
     def create_socket(self):
         UDPSocket = socket(AF_INET, SOCK_DGRAM)
