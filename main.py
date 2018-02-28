@@ -1,4 +1,4 @@
-from rpi_broadcast import *
+from broadcast import Broadcast
 from nfc import Nfc
 from time import *
 
