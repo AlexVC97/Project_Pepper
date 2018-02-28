@@ -8,24 +8,23 @@ class RpiBroadcast():
         self.data = ""
         self.address = ("", 5001)
         self.validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
-        RpiBroadcast().create_socket()
+        self.udpSocket = socket(AF_INET, SOCK_DGRAM)
 
-    def create_socket(self):
-        UDPSocket = socket(AF_INET, SOCK_DGRAM)
+    def config_socket(self):
         # Indicates if the local address can be reused
-        UDPSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+        self.udpSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         # Set TTL in the IP header
-        UDPSocket.setsockopt(SOL_IP, IP_TTL, 1)
+        self.udpSocket.setsockopt(SOL_IP, IP_TTL, 1)
         # Enable the socket for issuing messages to a broadcast address
-        UDPSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-        UDPSocket.bind(self.address)
-        UDPSocket.settimeout(1)
+        self.udpSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
+        self.udpSocket.bind(self.address)
+        self.udpSocket.settimeout(1)
 
     def send_broadcast(self):
         while(self.data != "true"):
             try:
                 print self.data
-                UDPSocket.sendto(self.serialNo, ("<broadcast>", 5000))
+                self.udpSocket.sendto(self.serialNo, ("<broadcast>", 5000))
                 self.data, addr = UDPSocket.recvfrom(1024) # 1 kilo Byte
             except error:
                 data = None
