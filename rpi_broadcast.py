@@ -1,14 +1,12 @@
 from socket import *
 import re
 from time import *
-from threading import Thread
 
-class RpiBroadcast(Thread):
+class RpiBroadcast():
     def __init__(self, serialNo):
-        Thread.__init__(self)
         self.serialNo = serialNo
 
-    def run(self):
+    def create_socket():
         address = ("", 5001)
         data = "false"
         validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
@@ -21,6 +19,8 @@ class RpiBroadcast(Thread):
         UDPSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
         UDPSocket.bind(address)
         UDPSocket.settimeout(1)
+
+    def send_broadcast(self):
         while(data != "true"):
             try:
                 print data
