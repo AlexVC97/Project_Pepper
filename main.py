@@ -3,8 +3,6 @@ from nfc import Nfc
 from time import *
 import json
 
-serialNo = ""
-
 with open('config.json') as json_data:
     data = json.load(json_data)
     serialNo = data['SerialNo']
