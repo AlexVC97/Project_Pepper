@@ -32,7 +32,6 @@ class Broadcast():
     def send_broadcast(self):
         while(self.data != "true"):
             try:
-                print self.data
                 self.udpSocket.sendto(self.serialNo, ("<broadcast>", 5000))
                 self.data, addr = self.udpSocket.recvfrom(1024) # 1 kilo Byte
             except error:
