@@ -23,10 +23,9 @@ class RpiBroadcast():
     def send_broadcast(self):
         while(self.data != "true"):
             try:
-                self.udpSocket.settimeout(1)
                 print self.data
                 self.udpSocket.sendto(self.serialNo, ("<broadcast>", 5000))
-                self.data, addr = UDPSocket.recvfrom(1024) # 1 kilo Byte
+                self.data, addr = self.udpSocket.recvfrom(1024) # 1 kilo Byte
             except error:
                 self.data = None
             if self.data is None:
