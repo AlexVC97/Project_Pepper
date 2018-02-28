@@ -18,7 +18,7 @@ class RpiBroadcast():
         UDPSocket.setsockopt(SOL_IP, IP_TTL, 1)
         # Enable the socket for issuing messages to a broadcast address
         UDPSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
-        UDPSocket.bind(address)
+        UDPSocket.bind(self.address)
         UDPSocket.settimeout(1)
 
     def send_broadcast(self):
