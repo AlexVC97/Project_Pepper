@@ -17,6 +17,6 @@ if __name__ == "__main__":
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    if(rfid = True):
+    if(rfid == True):
         nfcThread.start()
         nfcThread.join()
