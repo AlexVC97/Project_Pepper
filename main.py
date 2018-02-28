@@ -5,6 +5,7 @@ import json
 
 with open('config.json') as json_data:
     data = json.load(json_data)
+    print data['Pepper']['SerialNo']
     for config in data['Pepper']:
         print config['SerialNo']
 
