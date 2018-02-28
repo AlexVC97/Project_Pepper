@@ -5,12 +5,12 @@ from time import *
 class RpiBroadcast():
     def __init__(self, serialNo):
         self.serialNo = serialNo
+        self.data = ""
+        self.address = ("", 5001)
+        self.validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
 
     @staticmethod
     def create_socket():
-        address = ("", 5001)
-        data = "false"
-        validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
         UDPSocket = socket(AF_INET, SOCK_DGRAM)
         # Indicates if the local address can be reused
         UDPSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
@@ -22,17 +22,17 @@ class RpiBroadcast():
         UDPSocket.settimeout(1)
 
     def send_broadcast(self):
-        while(data != "true"):
+        while(self.data != "true"):
             try:
-                print data
+                print self.data
                 UDPSocket.sendto(self.serialNo, ("<broadcast>", 5000))
-                data, addr = UDPSocket.recvfrom(1024) # 1 kilo Byte
+                self.data, addr = UDPSocket.recvfrom(1024) # 1 kilo Byte
             except error:
                 data = None
             if data is None:
                 print "Nothing received yet! Try again!"
-        print data
+        print self.data
         convert = "".join(map(str,addr))
-        ip = re.findall(validIpAddressRegex, convert)
+        ip = re.findall(self.validIpAddressRegex, convert)
         print ip[0]
         sleep(5)
