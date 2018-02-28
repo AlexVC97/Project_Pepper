@@ -2,14 +2,20 @@ from socket import *
 from time import *
 import re
 import logging
+import logging.handlers
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter("%(levelname)s:%(name)s:%(message)s")
-file_handler = logging.FileHandler("pepper.log")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+#file_handler = logging.FileHandler("pepper.log")
+#file_handler.setFormatter(formatter)
+
+rotate_handler = logging.handlers.RotatingFileHandler(logging.pepper.out, maxBytes=100, backupCount=3)
+rotate_handler.setFormatter(formatter)
+
+#logger.addHandler(file_handler)
+logger.addHandler(rotate_handler)
 
 class Broadcast():
     def __init__(self, serialNo):
