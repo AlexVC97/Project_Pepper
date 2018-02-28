@@ -1,5 +1,6 @@
 from rpi_broadcast import RpiBroadcast
 from nfc import Nfc
+from time import *
 
 if __name__ == "__main__":
     broadcast = RpiBroadcast("1254268ECHDN")
