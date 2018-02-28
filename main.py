@@ -5,9 +5,8 @@ import json
 
 with open('config.json') as json_data:
     data = json.load(json_data)
-    print data['Pepper']['SerialNo']
-    for config in data['Pepper']:
-        print config['SerialNo']
+    print data['SerialNo']
+    print data['RFID']
 
 if __name__ == "__main__":
     broadcast = Broadcast("1254268ECHDN")
