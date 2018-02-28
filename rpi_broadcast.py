@@ -28,8 +28,8 @@ class RpiBroadcast():
                 self.udpSocket.sendto(self.serialNo, ("<broadcast>", 5000))
                 self.data, addr = UDPSocket.recvfrom(1024) # 1 kilo Byte
             except error:
-                data = None
-            if data is None:
+                self.data = None
+            if self.data is None:
                 print "Nothing received yet! Try again!"
         print self.data
         convert = "".join(map(str,addr))
