@@ -1,8 +1,17 @@
 from socket import *
-import re
 from time import *
+import re
+import logging
 
-class RpiBroadcast():
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter("%(levelname)s:%(name)s:%(message)s")
+file_handler = logging.FileHandler("pepper.log")
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+
+class Broadcast():
     def __init__(self, serialNo):
         self.serialNo = serialNo
         self.data = ""
@@ -29,9 +38,8 @@ class RpiBroadcast():
             except error:
                 self.data = None
             if self.data is None:
-                print "Nothing received yet! Try again!"
-        print self.data
+                logger.debug("Nothing received yet! Try again!")
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
-        print ip[0]
+        logger.debug("Received: " + ip[0])
         sleep(5)
