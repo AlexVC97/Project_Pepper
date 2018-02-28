@@ -9,8 +9,7 @@ class RpiBroadcast():
         self.address = ("", 5001)
         self.validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
 
-    @staticmethod
-    def create_socket():
+    def create_socket(self):
         UDPSocket = socket(AF_INET, SOCK_DGRAM)
         # Indicates if the local address can be reused
         UDPSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
