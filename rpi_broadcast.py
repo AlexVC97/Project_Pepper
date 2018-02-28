@@ -6,6 +6,7 @@ class RpiBroadcast():
     def __init__(self, serialNo):
         self.serialNo = serialNo
 
+    @staticmethod
     def create_socket():
         address = ("", 5001)
         data = "false"
