@@ -11,7 +11,8 @@ formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 #file_handler = logging.FileHandler("pepper.log")
 #file_handler.setFormatter(formatter)
 
-rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', 'w', maxBytes=1024000, backupCount=2)
+rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='w', maxBytes=1024000, backupCount=2)
+rotate_handler.doRollOver()
 rotate_handler.setFormatter(formatter)
 
 #logger.addHandler(file_handler)
