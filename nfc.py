@@ -5,6 +5,22 @@ import RPi.GPIO as GPIO
 import MFRC522
 from time import sleep
 from threading import Thread
+import logging
+import logging.handlers
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter("%(levelname)s:%(name)s:%(message)s")
+#file_handler = logging.FileHandler("pepper.log")
+#file_handler.setFormatter(formatter)
+
+rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
+rotate_handler.doRollover()
+rotate_handler.setFormatter(formatter)
+
+#logger.addHandler(file_handler)
+logger.addHandler(rotate_handler)
 
 class Nfc(Thread):
     def __init__(self):

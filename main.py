@@ -6,7 +6,7 @@ import json
 with open('config.json') as json_data:
     data = json.load(json_data)
     serialNo = data['SerialNo']
-    rfid = data['RFID']
+    nfc = data['NFC']
 
 if __name__ == "__main__":
     broadcast = Broadcast(serialNo)
@@ -15,6 +15,6 @@ if __name__ == "__main__":
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    if(rfid == True):
+    if(nfc == True):
         nfcThread.start()
         nfcThread.join()
