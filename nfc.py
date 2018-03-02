@@ -24,9 +24,6 @@ class Nfc(Thread):
         # Create an object of the class MFRC522
         self.MIFAREReader = MFRC522.MFRC522()
 
-    def get_uid(self):
-        return str(self.uid)
-
     def run(self):
         oldUid = [0,0,0,0,0]
 
@@ -56,6 +53,6 @@ class Nfc(Thread):
                     flag_read = True
                     if oldUid != self.uid:
                         oldUid = self.uid
-                        logger.debug("Card read UID: " + Nfc().get_uid())
+                        logger.debug("Card read UID: " + str(self.uid))
                        # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
