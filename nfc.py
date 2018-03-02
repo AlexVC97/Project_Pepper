@@ -21,6 +21,7 @@ class Nfc(Thread):
         Thread.__init__(self)
 
     def run(self):
+        continue_reading = True
         oldUid = [0,0,0,0,0]
 
         # Create an object of the class MFRC522
