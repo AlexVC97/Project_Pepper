@@ -18,8 +18,8 @@ if __name__ == "__main__":
 
     if(nfc == True):
         nfcThread.start()
-        print "UID received: " + nfcThread.get_uid()
         nfcThread.join()
+        print "UID received: " + nfcThread.get_uid()
 
     '''
     runner = ApplicationRunner(
