@@ -21,10 +21,12 @@ class Nfc(Thread):
         Thread.__init__(self)
         self.continue_reading = True
         self.uid = [0,0,0,0,0]
+        # Create an object of the class MFRC522
+        self.MIFAREReader = MFRC522.MFRC522()
 
     def set_uid(self):
         # Get the UID of the card
-        (status,self.uid) = MIFAREReader.MFRC522_Anticoll()
+        (status,self.uid) = self.MIFAREReader.MFRC522_Anticoll()
 
     def get_uid(self):
         return str(self.uid)
@@ -32,28 +34,25 @@ class Nfc(Thread):
     def run(self):
         oldUid = [0,0,0,0,0]
 
-        # Create an object of the class MFRC522
-        MIFAREReader = MFRC522.MFRC522()
-
         # Welcome message
         print "Identificatie APP"
         print "Press break to stop."
 
-        MIFAREReader.Write_MFRC522(0x04,0x55)
+        self.MIFAREReader.Write_MFRC522(0x04,0x55)
 
         # This loop keeps checking for chips. If one is near it will get the UID and authenticate
         while self.continue_reading:
             # Scan for cards
-            (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+            (status,TagType) = self.MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
             sleep(1)
             # If a card is found
-            if status == MIFAREReader.MI_OK:
+            if status == self.MIFAREReader.MI_OK:
                 #print "Card detected"
                 Nfc().set_uid()
 
                 # If we have the UID, continue
-                if status == MIFAREReader.MI_OK:
+                if status == self.MIFAREReader.MI_OK:
                     #Print UID
                     #print "Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3])+","+str(uid[4])
 
