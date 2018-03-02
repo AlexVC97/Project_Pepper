@@ -20,6 +20,7 @@ class Nfc(Thread):
     def __init__(self):
         Thread.__init__(self)
         self.continue_reading = True
+        self.uid = [0,0,0,0,0]
 
     def set_uid(self):
         # Get the UID of the card
