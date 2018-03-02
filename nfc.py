@@ -22,7 +22,7 @@ class Nfc(Thread):
         self.continue_reading = True
         self.uid = [0,0,0,0,0]
 
-    def set_uid(self):
+    def set_uid():
         # Get the UID of the card
         (status,self.uid) = MIFAREReader.MFRC522_Anticoll()
 
