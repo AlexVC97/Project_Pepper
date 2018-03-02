@@ -21,6 +21,13 @@ class Nfc(Thread):
         Thread.__init__(self)
         self.continue_reading = True
 
+    def set_uid(self):
+        # Get the UID of the card
+        (status,uid) = MIFAREReader.MFRC522_Anticoll()
+
+    def get_uid(self):
+        return str(uid)
+
     def run(self):
         oldUid = [0,0,0,0,0]
 
@@ -42,8 +49,7 @@ class Nfc(Thread):
             # If a card is found
             if status == MIFAREReader.MI_OK:
                 #print "Card detected"
-                # Get the UID of the card
-                (status,uid) = MIFAREReader.MFRC522_Anticoll()
+                set_uid()
 
                 # If we have the UID, continue
                 if status == MIFAREReader.MI_OK:

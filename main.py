@@ -20,7 +20,8 @@ if __name__ == "__main__":
         nfcThread.start()
         nfcThread.join()
 
-    print "UID: " + uid
+    print "UID received: " + nfcThread.get_uid()
+
     '''
     runner = ApplicationRunner(
         environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://192.168.1.192:8080/ws"),
