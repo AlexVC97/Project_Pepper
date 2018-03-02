@@ -29,8 +29,8 @@ class Nfc(Thread):
         MIFAREReader = MFRC522.MFRC522()
 
         # Welcome message
-        print "Identificatie APP"
-        print "Press break to stop."
+        print("Identificatie APP")
+        print("Press break to stop.")
 
         MIFAREReader.Write_MFRC522(0x04,0x55)
 
