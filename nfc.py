@@ -43,7 +43,7 @@ class Nfc(Thread):
         # This loop keeps checking for chips. If one is near it will get the UID and authenticate
         while self.continue_reading:
             # Scan for cards
-            (status,TagType) = self.MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
+            (status,TagType) = self.MIFAREReader.MFRC522_Request(self.MIFAREReader.PICC_REQIDL)
 
             sleep(1)
             # If a card is found
