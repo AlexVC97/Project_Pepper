@@ -49,7 +49,7 @@ class Nfc(Thread):
             # If a card is found
             if status == MIFAREReader.MI_OK:
                 #print "Card detected"
-                set_uid()
+                Nfc.set_uid()
 
                 # If we have the UID, continue
                 if status == MIFAREReader.MI_OK:
