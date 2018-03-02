@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from broadcast import Broadcast
 from nfc import Nfc
 from time import *
