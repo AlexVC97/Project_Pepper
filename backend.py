@@ -9,6 +9,10 @@ class Backend(ApplicationSession):
     An application component that publishes an event every second.
     '''
 
+    def publish_nfc(nfc):
+        print("publish: com.myapp.nfc", nfc)
+        self.publish(u'com.myapp.nfc', nfc)
+
     async def onJoin(self, details):
         counter = 0
         while True:
@@ -17,5 +21,7 @@ class Backend(ApplicationSession):
 
             print("publish: com.myapp.topic2 'Hello world.'")
             self.publish(u'com.myapp.topic2', "Hello world.")
+
+            Backend().publish_nfc()
             counter += 1
             await asyncio.sleep(1)

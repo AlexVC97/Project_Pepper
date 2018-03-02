@@ -1,6 +1,5 @@
 from broadcast import Broadcast
 from nfc import Nfc
-#from backend import Backend
 from time import *
 import json
 

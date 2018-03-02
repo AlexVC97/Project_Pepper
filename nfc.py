@@ -3,6 +3,7 @@
 
 import RPi.GPIO as GPIO
 import MFRC522
+from backend import Backend
 from time import sleep
 from threading import Thread
 import logging
@@ -54,5 +55,6 @@ class Nfc(Thread):
                     if oldUid != uid:
                         oldUid = uid
                         logger.debug("Card read UID: " + str(uid))
+                        Backend.publish_nfc(str(uid))
                        # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
