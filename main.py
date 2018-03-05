@@ -8,9 +8,12 @@ from backend import Backend
 from time import *
 import json
 
+hostSerialNo = ""
+nfc = False
+
 with open('config.json') as json_data:
     data = json.load(json_data)
-    serialNo = data['SerialNo']
+    hostSerialNo = data['HostSerialNo']
     nfc = data['NFC']
 
 if __name__ == "__main__":
