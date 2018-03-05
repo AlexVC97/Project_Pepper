@@ -29,8 +29,8 @@ class Nfc(Thread):
         MIFAREReader = MFRC522.MFRC522()
 
         # Welcome message
-        print("Identificatie APP")
-        print("Press break to stop.")
+        print "Identificatie APP"
+        print "Press break to stop."
 
         MIFAREReader.Write_MFRC522(0x04,0x55)
 
@@ -55,6 +55,5 @@ class Nfc(Thread):
                     if oldUid != uid:
                         oldUid = uid
                         logger.debug("Card read UID: " + str(uid))
-                        Backend.publish_nfc(str(uid))
-                       # This is the default key for authentication
+                        # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]

@@ -20,12 +20,6 @@ if __name__ == "__main__":
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    runner = ApplicationRunner(
-        environ.get("AUTOBAHN_DEMO_ROUTER", u"ws://192.168.1.192:8080/ws"),
-        u"crossbardemo",
-    )
-    runner.run(Backend)
-
     if(nfc == True):
         nfcThread.start()
         nfcThread.join()
