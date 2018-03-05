@@ -41,5 +41,5 @@ class Broadcast():
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + ip[0]
-        logging.info("Received: " + ip[0])
+        logger.info("Received: " + ip[0])
         sleep(5)

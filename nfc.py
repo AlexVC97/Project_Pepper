@@ -49,6 +49,6 @@ class Nfc(Thread):
                     flag_read = True
                     if oldUid != uid:
                         oldUid = uid
-                        logging.info("Card read UID: " + str(uid))
+                        logger.info("Card read UID: " + str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]

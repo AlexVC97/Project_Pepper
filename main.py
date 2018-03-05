@@ -19,13 +19,13 @@ with open('config.json') as json_data:
     nfc = data['NFC']
 
 def main():
-    logging.getLogger(__name__)
-    logging.setLevel(logging.INFO)
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
     rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
     rotate_handler.doRollover()
     rotate_handler.setFormatter(formatter)
-    logging.addHandler(rotate_handler)
+    logger.addHandler(rotate_handler)
 
 if __name__ == "__main__":
     main()
