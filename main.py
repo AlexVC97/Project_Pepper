@@ -17,7 +17,7 @@ with open('config.json') as json_data:
     nfc = data['NFC']
 
 if __name__ == "__main__":
-    broadcast = Broadcast(serialNo)
+    broadcast = Broadcast(hostSerialNo)
     nfcThread = Nfc()
 
     broadcast.config_socket()
