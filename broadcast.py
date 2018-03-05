@@ -6,8 +6,8 @@ import re
 import logging
 #import logging.handlers
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger(__name__)
+#logger.setLevel(logging.INFO)
 
 class Broadcast():
     def __init__(self, serialNo):
@@ -41,5 +41,5 @@ class Broadcast():
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + ip[0]
-        logger.info("Received: " + ip[0])
+        logging.info("Received: " + ip[0])
         sleep(5)

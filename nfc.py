@@ -9,8 +9,8 @@ from threading import Thread
 import logging
 #import logging.handlers
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+#logger = logging.getLogger(__name__)
+#logger.setLevel(logging.INFO)
 
 class Nfc(Thread):
     def __init__(self):
@@ -49,6 +49,6 @@ class Nfc(Thread):
                     flag_read = True
                     if oldUid != uid:
                         oldUid = uid
-                        logger.info("Card read UID: " + str(uid))
+                        logging.info("Card read UID: " + str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
