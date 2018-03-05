@@ -3,8 +3,10 @@
 from socket import *
 from time import *
 import re
-#import logging
+import logging
 #import logging.handlers
+
+logger = logging.getLogger(__name__)
 
 class Broadcast():
     def __init__(self, serialNo):

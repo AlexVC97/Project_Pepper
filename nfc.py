@@ -6,8 +6,10 @@ import MFRC522
 from backend import Backend
 from time import sleep
 from threading import Thread
-#import logging
+import logging
 #import logging.handlers
+
+logger = logging.getLogger(__name__)
 
 class Nfc(Thread):
     def __init__(self):
