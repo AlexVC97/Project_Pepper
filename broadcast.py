@@ -7,7 +7,7 @@ import logging
 #import logging.handlers
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 class Broadcast():
     def __init__(self, serialNo):
@@ -27,7 +27,7 @@ class Broadcast():
         self.udpSocket.bind(self.address)
         self.udpSocket.settimeout(1)
         print "Socket has been configured, waiting for the IP address.."
-        logger.debug("Socket has been configured, waiting for the IP address..")
+        logger.info("Socket has been configured, waiting for the IP address..")
 
     def send_broadcast(self):
         while(self.data != "true"):
@@ -37,9 +37,9 @@ class Broadcast():
             except error:
                 self.data = None
             if self.data is None:
-                logger.debug("Nothing received yet! Try again!")
+                logger.info("Nothing received yet! Try again!")
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + ip[0]
-        logger.debug("Received: " + ip[0])
+        logger.info("Received: " + ip[0])
         sleep(5)

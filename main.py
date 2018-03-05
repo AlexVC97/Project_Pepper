@@ -10,14 +10,6 @@ import json
 import logging
 import logging.handlers
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
-rotate_handler.doRollover()
-rotate_handler.setFormatter(formatter)
-logger.addHandler(rotate_handler)
-
 hostSerialNo = ""
 nfc = False
 
@@ -26,7 +18,17 @@ with open('config.json') as json_data:
     hostSerialNo = data['HostSerialNo']
     nfc = data['NFC']
 
+def main():
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
+    rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
+    rotate_handler.doRollover()
+    rotate_handler.setFormatter(formatter)
+    logger.addHandler(rotate_handler)
+
 if __name__ == "__main__":
+    main()
     print hostSerialNo
     print nfc
 
