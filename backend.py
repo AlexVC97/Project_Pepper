@@ -6,7 +6,7 @@ from twisted.internet.defer import inlineCallbacks
 from autobahn.twisted.util import sleep
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
-class Component(ApplicationSession):
+class Backend(ApplicationSession):
     '''
     An application component that publishes an event every second.
     '''
