@@ -7,6 +7,7 @@ import logging
 #import logging.handlers
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 class Broadcast():
     def __init__(self, serialNo):

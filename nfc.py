@@ -10,6 +10,7 @@ import logging
 #import logging.handlers
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 class Nfc(Thread):
     def __init__(self):
