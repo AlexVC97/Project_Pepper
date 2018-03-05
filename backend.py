@@ -1,19 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
+from __future__ import print_function
 from os import environ
-import asyncio
-from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
+from twisted.internet.defer import inlineCallbacks
+from autobahn.twisted.util import sleep
+from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
-class Backend(ApplicationSession):
+class Component(ApplicationSession):
     '''
     An application component that publishes an event every second.
     '''
 
-    def publish_nfc(nfc):
-        print("publish: com.myapp.nfc", nfc)
-        self.publish(u'com.myapp.nfc', nfc)
-
-    async def onJoin(self, details):
+    @inlineCallbacks
+    def onJoin(self, details):
         counter = 0
         while True:
             print("publish: com.myapp.topic1", counter)
@@ -21,7 +20,5 @@ class Backend(ApplicationSession):
 
             print("publish: com.myapp.topic2 'Hello world.'")
             self.publish(u'com.myapp.topic2', "Hello world.")
-
-            Backend().publish_nfc()
             counter += 1
-            await asyncio.sleep(1)
+            yield sleep(1)

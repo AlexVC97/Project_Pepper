@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 from socket import *
 from time import *
@@ -10,14 +10,11 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-#file_handler = logging.FileHandler("pepper.log")
-#file_handler.setFormatter(formatter)
 
 rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='w', maxBytes=1024000, backupCount=2)
 rotate_handler.doRollover()
 rotate_handler.setFormatter(formatter)
 
-#logger.addHandler(file_handler)
 logger.addHandler(rotate_handler)
 
 class Broadcast():
