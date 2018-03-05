@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from autobahn.twisted.wamp import ApplicationRunner
 from broadcast import Broadcast
 from nfc import Nfc
 from backend import Backend
