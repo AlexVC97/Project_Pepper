@@ -6,16 +6,8 @@ import MFRC522
 from backend import Backend
 from time import sleep
 from threading import Thread
-import logging
-import logging.handlers
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-formatter = logging.Formatter("%(levelname)s:%(name)s:%(message)s")
-file_handler = logging.FileHandler("logging.pepper.out")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+#import logging
+#import logging.handlers
 
 class Nfc(Thread):
     def __init__(self):

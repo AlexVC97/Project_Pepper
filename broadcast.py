@@ -3,19 +3,8 @@
 from socket import *
 from time import *
 import re
-import logging
-import logging.handlers
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-
-rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
-rotate_handler.doRollover()
-rotate_handler.setFormatter(formatter)
-
-logger.addHandler(rotate_handler)
+#import logging
+#import logging.handlers
 
 class Broadcast():
     def __init__(self, serialNo):
@@ -34,6 +23,8 @@ class Broadcast():
         self.udpSocket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
         self.udpSocket.bind(self.address)
         self.udpSocket.settimeout(1)
+        print "Socket has been configured, waiting for the IP address.."
+        logger.debug("Socket has been configured, waiting for the IP address..")
 
     def send_broadcast(self):
         while(self.data != "true"):
