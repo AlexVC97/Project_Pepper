@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from os import environ
 from twisted.internet.defer import inlineCallbacks
 from autobahn.twisted.util import sleep
 from autobahn.twisted.wamp import ApplicationSession
