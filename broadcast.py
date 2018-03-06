@@ -43,9 +43,9 @@ class Broadcast():
                 self.data = None
             if self.data is None:
                 print "Nothing received yet! Try again!"
-                sleep(5)
+                sleep(3)
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + ip[0]
         logger.info("Received: " + ip[0])
-        sleep(5)
+        return ip[0]
