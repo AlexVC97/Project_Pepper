@@ -21,7 +21,7 @@ class ClientHandler():
             time.sleep(1)
         time.sleep(3)
 
-    def publish(self, topic, msg):
+    def publishing(self, topic, msg):
         ret = self.client.publish(topic, msg, 0) # Publish
         print "Published return = " + str(ret)
         time.sleep(3)
