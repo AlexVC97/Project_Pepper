@@ -3,6 +3,8 @@
 from broadcast import Broadcast
 from nfc import Nfc
 from time import *
+#from publish import Publish
+#import paho.mqtt.client as mqtt
 import json
 
 hostSerialNo = ""
@@ -26,3 +28,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    print ip[0]

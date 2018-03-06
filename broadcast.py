@@ -42,7 +42,8 @@ class Broadcast():
             except error:
                 self.data = None
             if self.data is None:
-                logger.info("Nothing received yet! Try again!")
+                print "Nothing received yet! Try again!"
+                sleep(5)
         convert = "".join(map(str,addr))
         ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + ip[0]
