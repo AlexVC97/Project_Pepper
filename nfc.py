@@ -19,9 +19,9 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 class Nfc(Thread):
-    def __init__(self, my_mqtt):
+    def __init__(self, client):
         Thread.__init__(self)
-        self.my_mqtt = my_mqtt
+        self.my_mqtt = client
 
     def run(self):
         continue_reading = True
