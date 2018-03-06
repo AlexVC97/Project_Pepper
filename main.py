@@ -22,7 +22,7 @@ def main():
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    print ip[0]
+    print broadcast.ip[0]
 
     if(nfc == True):
         nfcThread.start()
