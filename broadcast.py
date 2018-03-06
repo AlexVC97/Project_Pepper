@@ -7,7 +7,7 @@ import logging
 import logging.handlers
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 file_handler = logging.FileHandler("logging.pepper.out")

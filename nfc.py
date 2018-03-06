@@ -10,7 +10,7 @@ import logging
 import logging.handlers
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 file_handler = logging.FileHandler("logging.pepper.out")
@@ -54,6 +54,7 @@ class Nfc(Thread):
                     flag_read = True
                     if oldUid != uid:
                         oldUid = uid
+                        print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
