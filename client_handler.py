@@ -22,7 +22,6 @@ class ClientHandler():
             sleep(1)
         sleep(3)
 
-    @classmethod
     def publishing(self, topic, msg):
         self.client.publish(topic, msg, 0) # Publish
         sleep(3)
