@@ -23,10 +23,8 @@ with open('config.json') as json_data:
     hostSerialNo = data['HostSerialNo']
     nfc = data['NFC']
 
-if __name__ == "__main__":
+def main():
     logger.info("The program has started..")
-    print hostSerialNo
-    print nfc
 
     broadcast = Broadcast(hostSerialNo)
     nfcThread = Nfc()
@@ -37,3 +35,6 @@ if __name__ == "__main__":
     if(nfc == True):
         nfcThread.start()
         nfcThread.join()
+
+if __name__ == "__main__":
+    main()
