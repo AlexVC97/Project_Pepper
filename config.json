@@ -1,4 +1,5 @@
 {
   "HostSerialNo": "1254268ECHDN",
-  "NFC": true
+  "NFC": true,
+  "NFC_topic": "mqtt/data/nfc"
 }

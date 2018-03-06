@@ -4,10 +4,6 @@ from socket import *
 from time import *
 import re
 import logging
-#import logging.handlers
-
-#logger = logging.getLogger(__name__)
-#logger.setLevel(logging.INFO)
 
 class Broadcast():
     def __init__(self, serialNo):
