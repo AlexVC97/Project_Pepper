@@ -46,7 +46,6 @@ class Broadcast():
                 print "Nothing received yet! Try again!"
                 sleep(3)
         convert = "".join(map(str,addr))
-        ip = re.findall(self.validIpAddressRegex, convert)
-        print "Received: " + ip[0]
-        logger.info("Received: " + ip[0])
-        return ip[0]
+        self.ip = re.findall(self.validIpAddressRegex, convert)
+        print "Received: " + self.ip[0]
+        logger.info("Received: " + self.ip[0])
