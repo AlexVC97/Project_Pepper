@@ -8,11 +8,11 @@ import logging.handlers
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-file_handler = logging.FileHandler("logging.pepper.out")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
+rotate_handler.doRollover()
+rotate_handler.setFormatter(formatter)
+logger.addHandler(rotate_handler)
 
 class Broadcast():
     def __init__(self, serialNo):
