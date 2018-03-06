@@ -23,8 +23,7 @@ class ClientHandler():
         sleep(3)
 
     def publishing(self, topic, msg):
-        ret = self.client.publish(topic, msg, 0) # Publish
-        print "Published return = " + str(ret)
+        self.client.publish(topic, msg, 0) # Publish
         sleep(3)
 
     def disconnect(self):
