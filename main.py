@@ -1,8 +1,11 @@
 #!/usr/bin/env python
+
 from broadcast import Broadcast
 from nfc import Nfc
 from time import *
 import json
+import logging
+import logging.handlers
 
 hostSerialNo = ""
 nfc = False
