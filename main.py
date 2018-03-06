@@ -18,10 +18,13 @@ with open('config.json') as json_data:
 
 def main():
     broadcast = Broadcast(hostSerialNo)
-    nfcThread = Nfc()
 
     broadcast.config_socket()
     broadcast.send_broadcast()
+
+    mqtt_client = ClientHandler(broadcast.ip[0], port)
+
+    nfcThread = Nfc(mqtt_client)
 
     if(nfc == True):
         nfcThread.start()
