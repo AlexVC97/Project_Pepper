@@ -19,9 +19,9 @@ file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
 class Nfc(Thread):
-    def __init__(self, client):
+    def __init__(self, my_mqtt):
         Thread.__init__(self)
-        self.client = client
+        self.my_mqtt = my_mqtt
 
     def run(self):
         continue_reading = True
@@ -58,6 +58,6 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
-                        self.client.publishing("armtronix_mqtt", str(uid))
+                        self.my_mqtt.publishing("armtronix_mqtt", str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
