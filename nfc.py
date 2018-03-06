@@ -9,6 +9,7 @@ from threading import Thread
 import logging
 import logging.handlers
 from broadcast import Broadcast
+from client_handler import ClientHandler
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
