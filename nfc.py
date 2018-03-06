@@ -21,7 +21,7 @@ logger.addHandler(file_handler)
 class Nfc(Thread):
     def __init__(self, client):
         Thread.__init__(self)
-        self.my_mqtt = client
+        self.client = client
 
     def run(self):
         continue_reading = True
@@ -58,6 +58,6 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
-                        self.my_mqtt.publish("mqtt/data/nfc", str(uid))
+                        self.client.publish("mqtt/data/nfc", str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
