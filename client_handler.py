@@ -19,13 +19,13 @@ class ClientHandler():
         self.client.loop_start()
         while not self.client.connected_flag: # Wait in loop
             print "In wait loop"
-            time.sleep(1)
-        time.sleep(3)
+            sleep(1)
+        sleep(3)
 
     def publishing(self, topic, msg):
         ret = self.client.publish(topic, msg, 0) # Publish
         print "Published return = " + str(ret)
-        time.sleep(3)
+        sleep(3)
 
     def disconnect(self):
         self.client.loop_stop()
