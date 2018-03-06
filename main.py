@@ -3,8 +3,6 @@ from broadcast import Broadcast
 from nfc import Nfc
 from time import *
 import json
-import logging
-import logging.handlers
 
 hostSerialNo = ""
 nfc = False
@@ -23,6 +21,7 @@ with open('config.json') as json_data:
     nfc = data['NFC']
 
 if __name__ == "__main__":
+    logger.info("The program has started..")
     print hostSerialNo
     print nfc
 

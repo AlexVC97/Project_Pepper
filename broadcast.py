@@ -4,6 +4,15 @@ from socket import *
 from time import *
 import re
 import logging
+import logging.handlers
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
+file_handler = logging.FileHandler("logging.pepper.out")
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 class Broadcast():
     def __init__(self, serialNo):
