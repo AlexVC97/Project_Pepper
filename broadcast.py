@@ -21,6 +21,7 @@ class Broadcast():
         self.address = ("", 5001)
         self.validIpAddressRegex = r'(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})\.(?:[\d]{1,3})'
         self.udpSocket = socket(AF_INET, SOCK_DGRAM)
+        self.ip = [{""}]
 
     def config_socket(self):
         # Indicates if the local address can be reused
