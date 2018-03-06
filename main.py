@@ -22,6 +22,7 @@ def main():
     broadcast.send_broadcast()
 
     mqtt_client = ClientHandler(broadcast.ip[0], port)
+    mqtt_client.make_connection()
 
     nfcThread = Nfc(mqtt_client)
 
