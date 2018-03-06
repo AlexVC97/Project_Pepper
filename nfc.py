@@ -8,6 +8,7 @@ from time import sleep
 from threading import Thread
 import logging
 import logging.handlers
+from broadcast import Broadcast
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -24,6 +25,9 @@ class Nfc(Thread):
     def run(self):
         continue_reading = True
         oldUid = [0,0,0,0,0]
+
+        client = ClientHandler(broadcast.ip[0], port)
+        client.make_connection()
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
@@ -56,5 +60,6 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
+                        client.publish("mqtt/data/nfc", str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]

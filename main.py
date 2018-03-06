@@ -9,6 +9,7 @@ import json
 
 hostSerialNo = ""
 nfc = False
+port = 1883
 
 with open('config.json') as json_data:
     data = json.load(json_data)
@@ -21,8 +22,6 @@ def main():
 
     broadcast.config_socket()
     broadcast.send_broadcast()
-
-    print ip[0]
 
     if(nfc == True):
         nfcThread.start()
