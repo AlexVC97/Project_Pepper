@@ -58,6 +58,6 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
-                        self.client.publishing("mqtt/data/nfc", str(uid))
+                        self.client.publishing("armtronix_mqtt", str(uid))
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
