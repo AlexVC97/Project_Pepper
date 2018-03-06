@@ -3,8 +3,7 @@
 from broadcast import Broadcast
 from nfc import Nfc
 from time import *
-#from publish import Publish
-#import paho.mqtt.client as mqtt
+from client_handler import ClientHandler
 import json
 
 hostSerialNo = ""
