@@ -26,6 +26,11 @@ class Nfc(Thread):
         self.configHandler = ConfigHandler()
         self.data = {"card_id": 0, "uid": [0,0,0,0,0]}
 
+    def datetime_handler(x):
+        if isinstance(x, datetime.datetime):
+            return x.isoformat()
+        raise TypeError("Unknown type")
+
     def run(self):
         continue_reading = True
         oldUid = [0,0,0,0,0]
@@ -66,7 +71,7 @@ class Nfc(Thread):
                         logger.info("Card read UID: " + str(uid))
                         self.data['card_id'] = card_id
                         self.data['uid'] = str(uid)
-                        json_data = json.dumps(self.data)
+                        json_data = json.dumps(self.data, default = datetime_handler)
                         self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
                         card_id += 1
                         # This is the default key for authentication
