@@ -18,7 +18,7 @@ def main():
     mqtt_client = ClientHandler(configHandler.get_mqttBroker(),
         configHandler.get_mqttPort())
     print "BROKER: " + configHandler.get_mqttBroker()
-    print "PORT: " + configHandler.get_mqttPort()
+    print "PORT: " + str(configHandler.get_mqttPort())
     mqtt_client.make_connection()
 
     nfcThread = Nfc(mqtt_client)
