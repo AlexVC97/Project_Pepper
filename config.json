@@ -1,5 +1,7 @@
 {
   "HostSerialNo": "1254268ECHDN",
+  "MQTT_broker": "iot.eclipse.org",
+  "MQTT_port": 1883,
   "NFC": true,
   "NFC_topic": "mqtt/data/nfc"
 }
