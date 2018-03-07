@@ -1,6 +1,7 @@
 from communication import Communication
 import paho.mqtt.client as mqtt
 from time import *
+import logging
 
 class ClientHandler():
     def __init__(self, broker_ip, broker_port):
@@ -17,7 +18,8 @@ class ClientHandler():
         self.client.connect(self.broker_ip, self.broker_port) # Establish connection
         self.client.loop_start()
         while not self.client.connected_flag: # Wait in loop
-            print "In wait loop"
+            print "Waiting for connection.."
+            logging.info("clienthandler:Waiting for connection..")
             sleep(1)
         sleep(3)
 

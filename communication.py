@@ -15,4 +15,4 @@ class Communication():
         logging.info("communication:Client disconnected OK")
 
     def on_publish(self, client, userdata, mid):
-        logging.info("communication:in on_pub callback mid = " + str(mid))
+        logging.info("communication:In on_publish callback mid = " + str(mid))
