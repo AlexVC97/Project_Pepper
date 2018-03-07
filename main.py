@@ -8,7 +8,7 @@ from config_handler import ConfigHandler
 import logging
 
 logging.basicConfig(level = logging.INFO,
-    format = %(asctime)s:%(levelname)s:%(message)s)
+    format = "%(asctime)s:%(levelname)s:%(message)s")
 logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
 
 def main():
