@@ -12,14 +12,6 @@ from config_handler import ConfigHandler
 import json
 import datetime
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-file_handler = logging.FileHandler("logging.pepper.out")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
-
 class Nfc(Thread):
     def __init__(self, client):
         Thread.__init__(self)
@@ -64,10 +56,10 @@ class Nfc(Thread):
                     if oldUid != uid:
                         oldUid = uid
                         print "Read: " + str(uid)
-                        logger.info("Card read UID: " + str(uid))
+                        logging.info("nfc:Card read UID: " + str(uid))
                         self.data['card_id'] = card_id
                         self.data['uid'] = str(uid)
-                        self.data['timestamp'] = str(datetime.now())
+                        self.data['timestamp'] = str(datetime.datetime.now())
                         json_data = json.dumps(self.data)
                         self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
                         card_id += 1

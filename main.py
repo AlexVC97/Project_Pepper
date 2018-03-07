@@ -5,6 +5,11 @@ from nfc import Nfc
 from time import *
 from client_handler import ClientHandler
 from config_handler import ConfigHandler
+import logging
+
+logging.basicConfig(level = logging.INFO,
+    format = %(asctime)s:%(levelname)s:%(message)s)
+logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
 
 def main():
     configHandler = ConfigHandler()

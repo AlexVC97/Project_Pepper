@@ -4,15 +4,6 @@ from socket import *
 from time import *
 import re
 import logging
-import logging.handlers
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-rotate_handler = logging.handlers.RotatingFileHandler('logging.pepper.out', mode='a', maxBytes=1024000, backupCount=2)
-rotate_handler.doRollover()
-rotate_handler.setFormatter(formatter)
-logger.addHandler(rotate_handler)
 
 class Broadcast():
     def __init__(self, serialNo):
@@ -33,7 +24,7 @@ class Broadcast():
         self.udpSocket.bind(self.address)
         self.udpSocket.settimeout(1)
         print "Socket has been configured, waiting for the IP address.."
-        logger.info("Socket has been configured, waiting for the IP address..")
+        logging.info("broadcast:Socket has been configured, waiting for the IP address..")
 
     def send_broadcast(self):
         while(self.data != "true"):
@@ -48,4 +39,4 @@ class Broadcast():
         convert = "".join(map(str,addr))
         self.ip = re.findall(self.validIpAddressRegex, convert)
         print "Received: " + self.ip[0]
-        logger.info("Received: " + self.ip[0])
+        logging.info("broadcast:Received: " + self.ip[0])

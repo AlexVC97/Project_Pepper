@@ -1,4 +1,4 @@
-from publish import Publish
+from communication import Communication
 import paho.mqtt.client as mqtt
 from time import *
 
