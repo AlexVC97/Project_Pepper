@@ -16,7 +16,7 @@ class Nfc(Thread):
         Thread.__init__(self)
         self.my_mqtt = client
         self.configHandler = ConfigHandler()
-        self.data = {"card_id": 0, "uid": [0,0,0,0,0], "timestamp": str(datetime.datetime.now())}
+        self.data = {"card_id": 0, "uid": [0,0,0,0,0], "timestamp": datetime.datetime.now()}
 
     def run(self):
         continue_reading = True
