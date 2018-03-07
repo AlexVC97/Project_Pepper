@@ -8,7 +8,6 @@ from time import sleep
 from threading import Thread
 import logging
 import logging.handlers
-from client_handler import ClientHandler
 from config_handler import ConfigHandler
 
 logger = logging.getLogger(__name__)
@@ -24,12 +23,14 @@ class Nfc(Thread):
         Thread.__init__(self)
         self.my_mqtt = client
         self.configHandler = ConfigHandler()
+        self.data = {"card_id": 0, "uid": [0,0,0,0,0]}
 
     def run(self):
         continue_reading = True
         oldUid = [0,0,0,0,0]
 
         self.configHandler.read_json()
+        card_id = 0
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
@@ -62,8 +63,10 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
-                        print "TOPIC: " + self.configHandler.get_nfcTopic()
-                        self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), str(uid))
-                        #card_id += 1
+                        self.data['card_id'] = card_id
+                        self.data['uid'] = str(uid)
+                        json_data = json.dumps(self.data)
+                        self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
+                        card_id += 1
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
