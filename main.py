@@ -4,29 +4,23 @@ from broadcast import Broadcast
 from nfc import Nfc
 from time import *
 from client_handler import ClientHandler
-import json
-
-hostSerialNo = ""
-nfc = False
-port = 1883
-
-with open('config.json') as json_data:
-    data = json.load(json_data)
-    hostSerialNo = data['HostSerialNo']
-    nfc = data['NFC']
+from config_handler import ConfigHandler
 
 def main():
-    broadcast = Broadcast(hostSerialNo)
+    configHandler = ConfigHandler()
+    configHandler.read_json()
 
+    broadcast = Broadcast(configHandler.get_hostSerialNo)
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    mqtt_client = ClientHandler(broadcast.ip[0], port)
+    mqtt_client = ClientHandler(configHandler.get_mqttBroker,
+        configHandler.get_mqttPort)
     mqtt_client.make_connection()
 
     nfcThread = Nfc(mqtt_client)
 
-    if(nfc == True):
+    if(configHandler.get_nfc == True):
         nfcThread.start()
         nfcThread.join()
 
