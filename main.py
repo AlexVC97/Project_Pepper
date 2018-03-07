@@ -19,12 +19,11 @@ def main():
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    mqtt_client = ClientHandler(configHandler.get_mqttBroker(),
+    clientHandler = ClientHandler(configHandler.get_mqttBroker(),
         configHandler.get_mqttPort())
-    mqtt_client.make_connection()
+    clientHandler.make_connection()
 
-    nfcThread = Nfc(mqtt_client)
-
+    nfcThread = Nfc(clientHandler)
     if(configHandler.get_nfc() == True):
         nfcThread.start()
         nfcThread.join()

@@ -12,7 +12,10 @@ class ClientHandler():
 
     def make_connection(self):
         mqtt.Client.connected_flag = False # Create flag in class
-        self.client.on_connect = self.communication.on_connect
+        try:
+            self.client.on_connect = self.communication.on_connect
+        except Exception as exception:
+            logging.warning(exception, False)
         self.client.on_disconnect = self.communication.on_disconnect
         self.client.on_publish = self.communication.on_publish
         self.client.connect(self.broker_ip, self.broker_port) # Establish connection

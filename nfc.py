@@ -51,7 +51,7 @@ class Nfc(Thread):
                     if oldUid != uid:
                         oldUid = uid
                         print "Read: " + str(uid)
-                        logging.warning("nfc:Card read UID: " + str(uid))
+                        logging.info("nfc:Card read UID: " + str(uid))
                         self.data['card_id'] = card_id
                         self.data['uid'] = str(uid)
                         json_data = json.dumps(self.data)
