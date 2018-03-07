@@ -3,7 +3,6 @@
 
 import RPi.GPIO as GPIO
 import MFRC522
-from backend import Backend
 from time import sleep
 from threading import Thread
 import logging
