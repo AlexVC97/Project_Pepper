@@ -11,7 +11,6 @@ class ClientHandler():
 
     def make_connection(self):
         mqtt.Client.connected_flag = False # Create flag in class
-        self.client.on_log = self.communication.on_log
         self.client.on_connect = self.communication.on_connect
         self.client.on_disconnect = self.communication.on_disconnect
         self.client.on_publish = self.communication.on_publish
