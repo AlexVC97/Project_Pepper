@@ -62,7 +62,7 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
-                        print "TOPIC: " + self.configHandler.get_nfcTopic()
+                        print "TOPIC: " + str(self.configHandler.get_nfcTopic())
                         self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), str(uid))
                         #card_id += 1
                         # This is the default key for authentication
