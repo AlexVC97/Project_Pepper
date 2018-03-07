@@ -18,11 +18,12 @@ class ClientHandler():
         try:
             self.client.connect(self.broker_ip, self.broker_port) # Establish connection
         except Exception as exception:
+            print "Connection can't be established!"
             logging.warning("clienthandler:Connection can't be established!")
         self.client.loop_start()
+        logging.info("clienthandler:Waiting for connection..")
         while not self.client.connected_flag: # Wait in loop
             print "Waiting for connection.."
-            logging.info("clienthandler:Waiting for connection..")
             sleep(1)
         sleep(3)
 
