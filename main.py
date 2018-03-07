@@ -23,7 +23,7 @@ def main():
 
     nfcThread = Nfc(mqtt_client)
 
-    print "NFC: " + configHandler.get_nfc()
+    print "NFC: " + str(configHandler.get_nfc())
 
     if(configHandler.get_nfc() == True):
         nfcThread.start()
