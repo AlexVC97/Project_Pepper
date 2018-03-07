@@ -39,24 +39,24 @@ class Nfc(Thread):
             # Scan for cards
             (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
-            try:
-                #sleep(1)
-                # If a card is found
-                if status == MIFAREReader.MI_OK:
-                    #print "Card detected"
-                    # Get the UID of the card
-                    (status,uid) = MIFAREReader.MFRC522_Anticoll()
+            #sleep(1)
+            # If a card is found
+            if status == MIFAREReader.MI_OK:
+                #print "Card detected"
+                # Get the UID of the card
+                (status,uid) = MIFAREReader.MFRC522_Anticoll()
 
-                    # If we have the UID, continue
-                    if status == MIFAREReader.MI_OK:
-                        if oldUid != uid:
-                            oldUid = uid
-                            print "Read: " + str(uid)
-                            logging.info("nfc:Card read UID: " + str(uid))
-                            self.data['card_id'] = card_id
-                            self.data['uid'] = str(uid)
-                            json_data = json.dumps(self.data)
+                # If we have the UID, continue
+                if status == MIFAREReader.MI_OK:
+                    if oldUid != uid:
+                        oldUid = uid
+                        print "Read: " + str(uid)
+                        logging.warning("nfc:Card read UID: " + str(uid))
+                        self.data['card_id'] = card_id
+                        self.data['uid'] = str(uid)
+                        json_data = json.dumps(self.data)
+                        try:
                             self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
-                            card_id += 1
-            except Exception:
-                print
+                        except Exception:
+                            logging.warning("nfc:Couldn't publish the data!")
+                        card_id += 1
