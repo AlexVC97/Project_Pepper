@@ -6,15 +6,15 @@ class ClientHandler():
     def __init__(self, broker_ip, broker_port):
         self.broker_ip = broker_ip
         self.broker_port = broker_port
-        self.publish = Publish()
+        self.communication = Communication()
         self.client = mqtt.Client("PUB_CLIENT") # Create new instance
 
     def make_connection(self):
         mqtt.Client.connected_flag = False # Create flag in class
-        self.client.on_log = self.publish.on_log
-        self.client.on_connect = self.publish.on_connect
-        self.client.on_disconnect = self.publish.on_disconnect
-        self.client.on_publish = self.publish.on_publish
+        self.client.on_log = self.communication.on_log
+        self.client.on_connect = self.communication.on_connect
+        self.client.on_disconnect = self.communication.on_disconnect
+        self.client.on_publish = self.communication.on_publish
         self.client.connect(self.broker_ip, self.broker_port) # Establish connection
         self.client.loop_start()
         while not self.client.connected_flag: # Wait in loop
