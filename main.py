@@ -10,17 +10,17 @@ def main():
     configHandler = ConfigHandler()
     configHandler.read_json()
 
-    broadcast = Broadcast(configHandler.get_hostSerialNo)
+    broadcast = Broadcast(configHandler.get_hostSerialNo())
     broadcast.config_socket()
     broadcast.send_broadcast()
 
-    mqtt_client = ClientHandler(configHandler.get_mqttBroker,
-        configHandler.get_mqttPort)
+    mqtt_client = ClientHandler(configHandler.get_mqttBroker(),
+        configHandler.get_mqttPort())
     mqtt_client.make_connection()
 
     nfcThread = Nfc(mqtt_client)
 
-    if(configHandler.get_nfc == True):
+    if(configHandler.get_nfc() == True):
         nfcThread.start()
         nfcThread.join()
 
