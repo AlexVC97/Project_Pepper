@@ -59,5 +59,6 @@ class Nfc(Thread):
                         print "Read: " + str(uid)
                         logger.info("Card read UID: " + str(uid))
                         self.my_mqtt.publishing("mqtt/data/nfc", str(uid))
+                        #card_id += 1
                         # This is the default key for authentication
                         key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
