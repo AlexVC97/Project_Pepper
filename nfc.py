@@ -51,7 +51,7 @@ class Nfc(Thread):
                     if oldUid != uid:
                         oldUid = uid
                         current_date = datetime.datetime.now()
-                        epoch = int(current_date.strftime("%s")) * 1000
+                        epoch = int(current_date.strftime("%s"))
                         print "Read: " + str(uid)
                         logging.info("nfc:Card read UID: " + str(uid))
                         self.data['pkt_ctr'] = pkt_ctr
