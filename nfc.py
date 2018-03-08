@@ -16,14 +16,16 @@ class Nfc(Thread):
         Thread.__init__(self)
         self.my_mqtt = client
         self.configHandler = ConfigHandler()
-        self.data = {"card_id": 0, "uid": [0,0,0,0,0], "timestamp": datetime.datetime.now()}
+        self.data = {"uid": [0,0,0,0,0], "pkt_ctr": 0}
 
     def run(self):
         continue_reading = True
         oldUid = [0,0,0,0,0]
 
         self.configHandler.read_json()
-        card_id = 0
+        pkt_ctr = 1
+        current_date = datetime.datetime.now()
+        epoch = int(current_date.strftime("%s")) * 1000
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
@@ -52,8 +54,9 @@ class Nfc(Thread):
                         oldUid = uid
                         print "Read: " + str(uid)
                         logging.info("nfc:Card read UID: " + str(uid))
-                        self.data['card_id'] = card_id
+                        self.data['pkt_ctr'] = pkt_ctr
                         self.data['uid'] = str(uid)
+                        self.data['timestamp'] = epoch
                         json_data = json.dumps(self.data)
                         try:
                             self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
