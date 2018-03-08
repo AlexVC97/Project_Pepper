@@ -24,8 +24,6 @@ class Nfc(Thread):
 
         self.configHandler.read_json()
         pkt_ctr = 1
-        current_date = datetime.datetime.now()
-        epoch = int(current_date.strftime("%s")) * 1000
 
         # Create an object of the class MFRC522
         MIFAREReader = MFRC522.MFRC522()
@@ -52,6 +50,8 @@ class Nfc(Thread):
                 if status == MIFAREReader.MI_OK:
                     if oldUid != uid:
                         oldUid = uid
+                        current_date = datetime.datetime.now()
+                        epoch = int(current_date.strftime("%s")) * 1000
                         print "Read: " + str(uid)
                         logging.info("nfc:Card read UID: " + str(uid))
                         self.data['pkt_ctr'] = pkt_ctr
