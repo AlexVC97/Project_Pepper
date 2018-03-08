@@ -62,4 +62,4 @@ class Nfc(Thread):
                             self.my_mqtt.publishing(self.configHandler.get_nfcTopic(), json_data)
                         except Exception:
                             logging.warning("nfc:Couldn't publish the data!")
-                        card_id += 1
+                        pkt_ctr += 1
